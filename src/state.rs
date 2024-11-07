@@ -65,4 +65,25 @@ impl AppState {
             is_changed: Default::default(),
         }
     }
+
+    pub(crate) fn generate_alive_msg(&mut self) -> String {
+        self.last_alive_msg = Local::now();
+        "FS Log Monitor still working".to_string()
+    }
+
+    /// Due if message not sent for the day and past the time to send the message
+    pub(crate) fn alive_msg_due(&self) -> bool {
+        if let Some(send_time) = self.alive_msg_time {
+            let now = Local::now();
+            if self.last_alive_msg.date_naive() != now.date_naive() {
+                now.time() >= send_time
+            } else {
+                // Same date as last message no due yet
+                false
+            }
+        } else {
+            // Always false not set to be sent
+            false
+        }
+    }
 }

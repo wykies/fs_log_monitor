@@ -12,22 +12,25 @@ use notification::send_notification;
 use state::AppState;
 
 pub fn run(cli: &Cli) -> anyhow::Result<()> {
-    let mut state = AppState::load(&cli.state_file).context("failed to load state")?;
+    let mut app_state = AppState::load(&cli.state_file).context("failed to load state")?;
     if cli.print_state_only {
-        println!("{state:#?}");
+        println!("{app_state:#?}");
         return Ok(());
     }
     if let Some(msg) = &cli.test_notification {
         send_notification(msg).context("sending test notification failed")?;
         return Ok(());
     }
+    if app_state.alive_msg_due() {
+        let alive_msg = app_state.generate_alive_msg();
+        send_notification(&alive_msg).context("failed to send alive message")?;
+    }
 
     // TODO 1: Read log and see if it has any errors
     // TODO 2: Send notification on errors detected
-    // TODO 3: Send still alive notification
     // TODO 3: Send notification if no logs detected in over 24 hours or over 6 hours and uptime is less than 24 hours
-    if state.is_changed() {
-        state
+    if app_state.is_changed() {
+        app_state
             .save(&cli.state_file)
             .context("failed to save state")?;
     }
