@@ -1,13 +1,16 @@
 use std::path::{Path, PathBuf};
 
+use chrono::{DateTime, Local};
+
 #[derive(Debug, serde::Serialize, serde::Deserialize)]
 #[serde(deny_unknown_fields)]
-pub struct State {
+pub struct AppState {
+    last_alive_message: DateTime<Local>,
     logs_dir: PathBuf,
     #[serde(skip)]
     is_changed: bool,
 }
-impl State {
+impl AppState {
     pub fn is_changed(&self) -> bool {
         self.is_changed
     }
@@ -22,10 +25,11 @@ impl State {
         todo!()
     }
 
-    pub(crate) fn new<P: AsRef<Path>>(logs_dir: PathBuf, state_file: P) -> anyhow::Result<Self> {
-        Ok(Self {
+    pub(crate) fn new(logs_dir: PathBuf) -> Self {
+        Self {
+            last_alive_message: Local::now(),
             logs_dir,
             is_changed: Default::default(),
-        })
+        }
     }
 }
