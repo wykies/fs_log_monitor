@@ -68,7 +68,7 @@ impl Email {
         })
     }
 
-    pub fn send(&self, msg: &str) -> anyhow::Result<()> {
+    pub fn send(msg: &str) -> anyhow::Result<()> {
         let email = Message::builder()
             .from(self.from_mailbox.clone())
             .to(self.to_mailbox.clone())

@@ -19,7 +19,7 @@ impl Discord {
         Ok(Self { url })
     }
 
-    pub fn send(&self, msg: &str) -> anyhow::Result<()> {
+    pub fn send(msg: &str) -> anyhow::Result<()> {
         for i in 0..Self::RETRY_ATTEMPTS {
             // Wait before trying again
             if i > 0 {
