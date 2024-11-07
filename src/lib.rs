@@ -14,7 +14,7 @@ use state::AppState;
 pub fn run(cli: &Cli) -> anyhow::Result<()> {
     let mut state = AppState::load(&cli.state_file).context("failed to load state")?;
     if cli.print_state_only {
-        println!("{state:?}");
+        println!("{state:#?}");
         return Ok(());
     }
     if let Some(msg) = &cli.test_notification {
