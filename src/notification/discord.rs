@@ -26,13 +26,17 @@ impl Discord {
         for i in 0..Self::RETRY_ATTEMPTS {
             // Wait before trying again
             if i > 0 {
+                eprintln!(
+                    "Going to sleep for {} seconds before retrying discord",
+                    Self::INTERVAL_BETWEEN_RETRY.as_secs()
+                );
                 std::thread::sleep(Self::INTERVAL_BETWEEN_RETRY);
             }
 
             match send_blocking_reqwest(msg, &discord.url) {
                 Ok(()) => return Ok(()),
                 Err(e) => eprintln!(
-                    "attempt #{} failed to send via discord. Error: {e:?}",
+                    "attempt #{} failed to send via discord with msg: {e:?}",
                     i + 1
                 ),
             }
@@ -50,6 +54,13 @@ fn send_blocking_reqwest(msg: &str, url: &str) -> anyhow::Result<()> {
         .header("Content-Type", "application/json")
         .body(json!({ "content": msg }).to_string())
         .send()?;
-    dbg!(resp);
-    Ok(())
+    if resp.status().is_success() {
+        Ok(())
+    } else {
+        let unexpected_response_value =
+            resp.error_for_status().context("error response returned")?;
+
+        // Assumption the code above will always result in an error being returned
+        bail!("not a successful status but conversion to error still failed? Response: {unexpected_response_value:?}")
+    }
 }
