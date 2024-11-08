@@ -4,26 +4,27 @@ mod cli;
 mod notification;
 mod state;
 
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
-use anyhow::Context;
+use anyhow::{anyhow, Context};
 pub use cli::Cli;
 use notification::send_notification;
 use state::AppState;
 
 pub fn run(cli: &Cli) -> anyhow::Result<()> {
-    let mut app_state = AppState::load(&cli.state_file).context("failed to load state")?;
+    let (state_file, config_folder) = get_canonical_folder_and_filename(&cli.state_file)?;
+    let mut app_state = AppState::load(state_file).context("failed to load state")?;
     if cli.print_state_only {
         println!("{app_state:#?}");
         return Ok(());
     }
     if let Some(msg) = &cli.test_notification {
-        send_notification(msg).context("sending test notification failed")?;
+        send_notification(msg, &config_folder).context("sending test notification failed")?;
         return Ok(());
     }
     if app_state.alive_msg_due() {
         let alive_msg = app_state.generate_alive_msg();
-        send_notification(&alive_msg).context("failed to send alive message")?;
+        send_notification(&alive_msg, &config_folder).context("failed to send alive message")?;
     }
 
     // TODO 1: Read log and see if it has any errors
@@ -35,6 +36,22 @@ pub fn run(cli: &Cli) -> anyhow::Result<()> {
             .context("failed to save state")?;
     }
     Ok(())
+}
+
+/// Converts the input into it's canonical form and based on the assumption that it is a file also returns the parent folder
+fn get_canonical_folder_and_filename<P: AsRef<Path>>(
+    file_path: P,
+) -> anyhow::Result<(PathBuf, PathBuf)> {
+    // TODO 4: Test what this error looks like and if we need to add more context
+    let canonical_file_path = file_path.as_ref().canonicalize()?;
+    let parent_folder = canonical_file_path
+        .parent()
+        .ok_or(anyhow!(
+            "failed to get parent folder for file: {}",
+            canonical_file_path.display()
+        ))?
+        .to_path_buf();
+    Ok((canonical_file_path, parent_folder))
 }
 
 pub fn init_state<P: AsRef<Path>>(logs: P, state_file: P) -> anyhow::Result<()> {

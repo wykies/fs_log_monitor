@@ -1,4 +1,4 @@
-use std::{fs, time::Duration};
+use std::{fs, path::Path, time::Duration};
 
 use anyhow::{bail, Context};
 
@@ -19,7 +19,7 @@ impl Discord {
         Ok(Self { url })
     }
 
-    pub fn send(msg: &str) -> anyhow::Result<()> {
+    pub fn send(msg: &str, config_folder: &Path) -> anyhow::Result<()> {
         for i in 0..Self::RETRY_ATTEMPTS {
             // Wait before trying again
             if i > 0 {

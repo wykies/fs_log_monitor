@@ -1,4 +1,5 @@
 use std::fs;
+use std::path::Path;
 
 use anyhow::Context;
 use lettre::message::Mailbox;
@@ -38,9 +39,9 @@ pub struct Email {
     transport: SmtpTransport,
 }
 impl Email {
-    pub fn new() -> anyhow::Result<Self> {
-        let filename = "e.data";
-        let file_contents = fs::read_to_string(filename)
+    pub fn new(config_folder: &Path) -> anyhow::Result<Self> {
+        let filename = config_folder.join("e.data");
+        let file_contents = fs::read_to_string(&filename)
             .with_context(|| format!("failed to read email settings from {filename:?}"))?;
         let email_config: EmailConfig = serde_json::from_str(&file_contents)
             .with_context(|| format!("failed to parse contents of {filename:?} as email config"))?;
@@ -68,14 +69,17 @@ impl Email {
         })
     }
 
-    pub fn send(msg: &str) -> anyhow::Result<()> {
-        let email = Message::builder()
-            .from(self.from_mailbox.clone())
-            .to(self.to_mailbox.clone())
-            .subject(self.subject.clone())
+    pub fn send(msg: &str, config_folder: &Path) -> anyhow::Result<()> {
+        let email = Self::new(config_folder)?;
+
+        let email_msg = Message::builder()
+            .from(email.from_mailbox.clone())
+            .to(email.to_mailbox.clone())
+            .subject(email.subject.clone())
             .body(msg.to_string())?;
-        self.transport
-            .send(&email)
+        email
+            .transport
+            .send(&email_msg)
             .context("failed to send email")?;
         Ok(())
     }
