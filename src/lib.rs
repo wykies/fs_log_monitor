@@ -20,6 +20,7 @@ pub fn run(cli: &Cli) -> anyhow::Result<()> {
     }
     if let Some(msg) = &cli.test_notification {
         send_notification(msg, &config_folder).context("sending test notification failed")?;
+        println!("TEST NOTIFICATION SENT");
         return Ok(());
     }
     if app_state.alive_msg_due() {
@@ -35,6 +36,7 @@ pub fn run(cli: &Cli) -> anyhow::Result<()> {
             .save(&cli.state_file)
             .context("failed to save state")?;
     }
+    println!("RUN COMPLETED");
     Ok(())
 }
 
