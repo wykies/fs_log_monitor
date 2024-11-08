@@ -44,8 +44,16 @@ pub fn run(cli: &Cli) -> anyhow::Result<()> {
 fn get_canonical_folder_and_filename<P: AsRef<Path>>(
     file_path: P,
 ) -> anyhow::Result<(PathBuf, PathBuf)> {
-    // TODO 4: Test what this error looks like and if we need to add more context
-    let canonical_file_path = file_path.as_ref().canonicalize()?;
+    let canonical_file_path = file_path.as_ref().canonicalize().with_context(|| {
+        format!(
+            "failed to get canonical version of: {:?} in working directory: {:?}",
+            file_path.as_ref(),
+            match std::env::current_dir() {
+                Ok(cwd) => cwd.to_string_lossy().to_string(),
+                Err(e) => format!("[failed {e}]"),
+            }
+        )
+    })?;
     let parent_folder = canonical_file_path
         .parent()
         .ok_or(anyhow!(
