@@ -5,7 +5,7 @@ use std::{
 };
 
 use anyhow::Context;
-use chrono::{DateTime, Local, NaiveTime};
+use chrono::{DateTime, Local, NaiveDateTime, NaiveTime};
 
 #[derive(Debug, serde::Serialize, serde::Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -13,6 +13,7 @@ pub struct AppState {
     last_alive_msg: DateTime<Local>,
     alive_msg_time: Option<NaiveTime>,
     logs_dir: PathBuf,
+    latest_log_datetime: NaiveDateTime,
     #[serde(skip)]
     is_changed: bool,
 }
@@ -61,6 +62,7 @@ impl AppState {
                 NaiveTime::from_hms_opt(7, 0, 0)
                     .expect("should be valid as it is set at build time"),
             ),
+            latest_log_datetime: Local::now().naive_local(),
             logs_dir,
             is_changed: Default::default(),
         }
@@ -85,5 +87,18 @@ impl AppState {
             // Always false not set to be sent
             false
         }
+    }
+
+    pub fn logs_dir(&self) -> &Path {
+        &self.logs_dir
+    }
+
+    pub fn latest_log_datetime(&self) -> NaiveDateTime {
+        self.latest_log_datetime
+    }
+
+    pub fn set_latest_log_datetime(&mut self, value: NaiveDateTime) {
+        self.is_changed = true;
+        self.latest_log_datetime = value;
     }
 }
