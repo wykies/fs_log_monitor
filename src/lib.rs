@@ -1,5 +1,3 @@
-// TODO 1: Get sample logs to work with from server
-
 mod cli;
 mod notification;
 mod state;

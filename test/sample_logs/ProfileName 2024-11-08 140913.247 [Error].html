@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[FreeFileSync] ProfileName ❌️</title>
+    <style>
+        .summary-table td:nth-child(1) { padding-right: 10px; }
+        .summary-table td:nth-child(2) { padding-right:  5px; }
+        .summary-table img { display: block; }
+
+        .log-items img { display: block; }
+        .log-items td { padding-bottom: 0.1em; }
+        .log-items td:nth-child(1) { padding-right: 10px; white-space: nowrap; }
+        .log-items td:nth-child(2) { padding-right: 10px; }
+    </style>
+</head>
+<body style="font-family: -apple-system, 'Segoe UI', Arial, Tahoma, Helvetica, sans-serif;">
+	<div><span style="font-weight:600; color:gray;">ProfileName</span> &nbsp;<span style="white-space:nowrap">2024-11-08 &nbsp;02:09:13 PM</span></div>
+
+    <div style="margin:10px 0; display:inline-block; border-radius:7px; background:#f8f8f8; box-shadow:1px 1px 4px #888; overflow:hidden;">
+        <div style="background-color:white; border-bottom:1px solid #AAA; font-size:larger; padding:10px;">
+            <img src="https://freefilesync.org/images/log/result-error.png" width="32" height="32" alt="" style="vertical-align:middle;">
+            <span style="font-weight:600; vertical-align:middle;">Completed with errors</span>
+        </div>
+        <table role="presentation" class="summary-table" style="border-spacing:0; margin-left:10px; padding:5px 10px;">
+            <tr>
+                <td>Errors:</td>
+                <td><img src="https://freefilesync.org/images/log/msg-error.png" width="24" height="24" alt=""></td>
+                <td><span style="font-weight:600;">4</span></td>
+            </tr>
+            <tr>
+                <td>Items processed:</td>
+                <td><img src="https://freefilesync.org/images/log/file.png" width="24" height="24" alt=""></td>
+                <td><span style="font-weight:600;">61</span> (27.3 MB)</td>
+            </tr>
+            <tr>
+                <td>Items remaining:</td>
+                <td></td>
+                <td><span style="font-weight:600;">2</span> (285 KB)</td>
+            </tr>
+            <tr>
+                <td>Total time:</td>
+                <td><img src="https://freefilesync.org/images/log/clock.png" width="24" height="24" alt=""></td>
+                <td><span style="font-weight: 600;">00:01:28</span></td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="font-weight:600; font-size: large;">Errors and warnings:</div>
+    <div style="border-bottom: 1px solid #AAA; margin: 5px 0;"></div>
+    <table class="log-items" style="line-height:1em; border-spacing:0;">
+		<tr>
+            <td valign="top">02:12:18 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-error.png" height="16" alt="Error:"></td>
+            <td>Cannot read file &quot;ProfileName:/sample@gmail.com/bob/logs.7z&quot;.<br>
+CURLE_OPERATION_TIMEDOUT: Operation too slow. Less than 1 bytes/sec transferred the last 10 seconds [curl_easy_perform]</td>
+        </tr>
+		<tr>
+            <td valign="top">02:12:18 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-error.png" height="16" alt="Error:"></td>
+            <td>Cannot delete file &quot;/home/bob/logs-ad8f.ffs_tmp&quot;.<br>
+ENOENT: No such file or directory [unlink]</td>
+        </tr>
+		<tr>
+            <td valign="top">02:12:37 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-error.png" height="16" alt="Error:"></td>
+            <td>Cannot read file &quot;ProfileName:/sample@gmail.com/bob/log2.7z&quot;.<br>
+CURLE_OPERATION_TIMEDOUT: Operation too slow. Less than 1 bytes/sec transferred the last 10 seconds [curl_easy_perform]</td>
+        </tr>
+		<tr>
+            <td valign="top">02:12:37 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-error.png" height="16" alt="Error:"></td>
+            <td>Cannot delete file &quot;/home/bob/log2-62c0.ffs_tmp&quot;.<br>
+ENOENT: No such file or directory [unlink]</td>
+        </tr>
+	</table>
+	<div style="border-bottom: 1px solid #AAA; margin: 5px 0;"></div><br>
+
+    <table class="log-items" style="line-height:1em; border-spacing:0;">
+		<tr>
+            <td valign="top">02:09:16 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Comparison finished: 1,890,726 items found — Time elapsed: 00:00:00</td>
+        </tr>
+		<tr>
+            <td valign="top">02:11:47 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Synchronizing folder pair: Two way &lt;-&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ProfileName:/sample@gmail.com<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/home/bob</td>
+        </tr>
+		<tr>
+            <td valign="top">02:11:47 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Creating folder &quot;/home/TempProfileNameRoot/Test 3&quot;</td>
+        </tr>
+		<tr>
+            <td valign="top">02:11:47 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Moving file <br>
+&quot;/home/Test 3/Copy of man.txt&quot; to <br>
+&quot;/home/TempProfileNameRoot/Test 3/Copy of man.txt&quot;</td>
+        </tr>
+		<tr>
+            <td valign="top">02:11:47 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Moving folder &quot;/home/Test 3&quot; to the recycle bin</td>
+        </tr>
+		<tr>
+            <td valign="top">02:11:47 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Moving file &quot;/home/bob/191292.pdf&quot; to the recycle bin</td>
+        </tr>
+		<tr>
+            <td valign="top">02:11:47 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Moving file &quot;/home/bob/191293.pdf&quot; to the recycle bin</td>
+        </tr>
+		<tr>
+            <td valign="top">02:11:47 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Moving file &quot;/home/bob/191306.pdf&quot; to the recycle bin</td>
+        </tr>
+		<tr>
+            <td valign="top">02:11:47 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Updating file &quot;/home/bob/s1.txt&quot;</td>
+        </tr>
+		<tr>
+            <td valign="top">02:11:49 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Creating folder &quot;/home/bob/Scans Cashier&quot;</td>
+        </tr>
+		<tr>
+            <td valign="top">02:11:49 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Creating file &quot;/home/bob/191323.pdf&quot;</td>
+        </tr>
+		<tr>
+            <td valign="top">02:11:50 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Creating file &quot;/home/bob/191330.pdf&quot;</td>
+        </tr>
+		<tr>
+            <td valign="top">02:11:51 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Creating file &quot;/home/bob/191342.pdf&quot;</td>
+        </tr>
+		<tr>
+            <td valign="top">02:11:51 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Creating file &quot;/home/bob/2024-11-07 #373.pdf&quot;</td>
+        </tr>
+		<tr>
+            <td valign="top">02:12:08 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Creating file &quot;/home/bob/logs.7z&quot;</td>
+        </tr>
+		<tr>
+            <td valign="top">02:12:18 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-error.png" height="16" alt="Error:"></td>
+            <td>Cannot read file &quot;ProfileName:/sample@gmail.com/bob/logs.7z&quot;.<br>
+CURLE_OPERATION_TIMEDOUT: Operation too slow. Less than 1 bytes/sec transferred the last 10 seconds [curl_easy_perform]</td>
+        </tr>
+		<tr>
+            <td valign="top">02:12:18 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-error.png" height="16" alt="Error:"></td>
+            <td>Cannot delete file &quot;/home/bob/logs-ad8f.ffs_tmp&quot;.<br>
+ENOENT: No such file or directory [unlink]</td>
+        </tr>
+		<tr>
+            <td valign="top">02:12:27 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Creating file &quot;/home/bob/log2.7z&quot;</td>
+        </tr>
+		<tr>
+            <td valign="top">02:12:37 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-error.png" height="16" alt="Error:"></td>
+            <td>Cannot read file &quot;ProfileName:/sample@gmail.com/bob/log2.7z&quot;.<br>
+CURLE_OPERATION_TIMEDOUT: Operation too slow. Less than 1 bytes/sec transferred the last 10 seconds [curl_easy_perform]</td>
+        </tr>
+		<tr>
+            <td valign="top">02:12:37 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-error.png" height="16" alt="Error:"></td>
+            <td>Cannot delete file &quot;/home/bob/log2-62c0.ffs_tmp&quot;.<br>
+ENOENT: No such file or directory [unlink]</td>
+        </tr>
+		<tr>
+            <td valign="top">02:13:04 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Creating file &quot;/home/bob/Scans Cashier/191292.pdf&quot;</td>
+        </tr>
+		<tr>
+            <td valign="top">02:13:05 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Creating file &quot;/home/bob/Scans Cashier/191293.pdf&quot;</td>
+        </tr>
+		<tr>
+            <td valign="top">02:13:07 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Creating file &quot;/home/bob/Scans Cashier/191298.pdf&quot;</td>
+        </tr>
+		<tr>
+            <td valign="top">02:13:08 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Creating file &quot;/home/bob/Scans Cashier/191299.pdf&quot;</td>
+        </tr>
+		<tr>
+            <td valign="top">02:13:08 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Creating file &quot;/home/bob/Scans Cashier/191306.pdf&quot;</td>
+        </tr>
+		<tr>
+            <td valign="top">02:13:10 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Creating file &quot;/home/bob/Scans Cashier/191309.pdf&quot;</td>
+        </tr>
+		<tr>
+            <td valign="top">02:13:11 PM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Creating file &quot;/home/bob/Scans Cashier/191311.pdf&quot;</td>
+        </tr>
+	</table>
+
+    <div style="border-bottom:1px solid #AAA; margin:5px 0;"></div>
+    <div style="font-size:smaller;">
+        <img src="https://freefilesync.org/images/log/os-linux.png" width="24" height="24" alt="" style="vertical-align:middle;">
+        <span style="vertical-align:middle;">Ubuntu 22.04 &ndash; bob &ndash; 20W6001NUS &ndash; DELL</span>
+    </div>
+</body>
+</html>
