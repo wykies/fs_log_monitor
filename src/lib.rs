@@ -52,7 +52,7 @@ pub fn run(cli: &Cli) -> anyhow::Result<()> {
     Ok(())
 }
 
-fn build_err_msg_from_logs(log_infos: Vec<LogInfo>) -> String {
+pub fn build_err_msg_from_logs(log_infos: Vec<LogInfo>) -> String {
     const MAX_MSG_LEN: usize = 2000;
     let log_count = log_infos.len();
     // Stores the running count of `Errors and warnings` found
@@ -79,7 +79,7 @@ fn build_err_msg_from_logs(log_infos: Vec<LogInfo>) -> String {
 }
 
 /// Returns a list of the new logs with errors
-fn process_logs_folder(app_state: &mut AppState) -> anyhow::Result<Vec<LogInfo>> {
+pub fn process_logs_folder(app_state: &mut AppState) -> anyhow::Result<Vec<LogInfo>> {
     let mut result = Vec::new();
     let mut latest_timestamp = app_state.latest_log_datetime();
     // TODO 3: Send notification if no logs detected in over 24 hours or over 6 hours and uptime is less than 24 hours
