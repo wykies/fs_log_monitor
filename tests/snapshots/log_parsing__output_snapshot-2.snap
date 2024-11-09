@@ -1,0 +1,10 @@
+---
+source: tests/log_parsing.rs
+expression: app_state
+---
+AppState(
+  last_alive_msg: "date_time",
+  alive_msg_time: Some("07:00:00"),
+  logs_dir: "tests/sample_logs",
+  latest_log_datetime: "2024-11-08T14:50:21",
+)

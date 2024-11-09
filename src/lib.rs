@@ -65,7 +65,7 @@ pub fn build_err_msg_from_logs(log_infos: Vec<LogInfo>) -> String {
         result.push_str(&log_info.to_string());
     }
     result.push_str(separator);
-    let summary = format!("{log_count} logs with {entry_count} error and warnings");
+    let summary = format!("{log_count} logs with {entry_count} error and warnings\n");
     result.push_str(&summary);
     result.push_str(separator);
     if result.len() > MAX_MSG_LEN {

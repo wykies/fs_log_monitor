@@ -57,7 +57,6 @@ impl AppState {
     pub fn new(logs_dir: PathBuf) -> Self {
         Self {
             last_alive_msg: Local::now(),
-            // TODO 4: Ensure there is a test to make sure this constant is correct
             alive_msg_time: Some(
                 NaiveTime::from_hms_opt(7, 0, 0)
                     .expect("should be valid as it is set at build time"),
