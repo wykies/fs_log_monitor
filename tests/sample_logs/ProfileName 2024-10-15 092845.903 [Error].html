@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[FreeFileSync] ProfileName ❌️</title>
+    <style>
+
+        .summary-table td:nth-child(1) { padding-right: 10px; }
+        .summary-table td:nth-child(2) { padding-right:  5px; }
+        .summary-table img { display: block; }
+
+        .log-items img { display: block; }
+        .log-items td { padding-bottom: 0.1em; }
+        .log-items td:nth-child(1) { padding-right: 10px; white-space: nowrap; }
+        .log-items td:nth-child(2) { padding-right: 10px; }
+    </style>
+</head>
+<body style="font-family: -apple-system, 'Segoe UI', Arial, Tahoma, Helvetica, sans-serif;">
+	<div><span style="font-weight:600; color:gray;">ProfileName</span> &nbsp;<span style="white-space:nowrap">10/15/2024 &nbsp;09:28:45 AM</span></div>
+
+    <div style="margin:10px 0; display:inline-block; border-radius:7px; background:#f8f8f8; box-shadow:1px 1px 4px #888; overflow:hidden;">
+        <div style="background-color:white; border-bottom:1px solid #AAA; font-size:larger; padding:10px;">
+            <img src="https://freefilesync.org/images/log/result-error.png" width="32" height="32" alt="" style="vertical-align:middle;">
+            <span style="font-weight:600; vertical-align:middle;">Completed with errors</span>
+        </div>
+        <table role="presentation" class="summary-table" style="border-spacing:0; margin-left:10px; padding:5px 10px;">
+            <tr>
+                <td>Errors:</td>
+                <td><img src="https://freefilesync.org/images/log/msg-error.png" width="24" height="24" alt=""></td>
+                <td><span style="font-weight:600;">1</span></td>
+            </tr>
+            <tr>
+                <td>Items processed:</td>
+                <td><img src="https://freefilesync.org/images/log/file.png" width="24" height="24" alt=""></td>
+                <td><span style="font-weight:600;">0</span> (0 bytes)</td>
+            </tr>
+            <tr>
+                <td>Items remaining:</td>
+                <td></td>
+                <td><span style="font-weight:600;">1</span> (26.6 KB)</td>
+            </tr>
+            <tr>
+                <td>Total time:</td>
+                <td><img src="https://freefilesync.org/images/log/clock.png" width="24" height="24" alt=""></td>
+                <td><span style="font-weight: 600;">00:00:07</span></td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="font-weight:600; font-size: large;">Errors and warnings:</div>
+    <div style="border-bottom: 1px solid #AAA; margin: 5px 0;"></div>
+    <table class="log-items" style="line-height:1em; border-spacing:0;">
+		<tr>
+            <td valign="top">09:30:19 AM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-error.png" height="16" alt="Error:"></td>
+            <td>Cannot open file &quot;/home/bob/missing_file.pdf&quot;.<br>
+ENOENT: No such file or directory [stat]</td>
+        </tr>
+	</table>
+	<div style="border-bottom: 1px solid #AAA; margin: 5px 0;"></div><br>
+
+    <table class="log-items" style="line-height:1em; border-spacing:0;">
+		<tr>
+            <td valign="top">09:28:47 AM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Comparison finished: 196 items found — Time elapsed: 00:00:00</td>
+        </tr>
+		<tr>
+            <td valign="top">09:28:48 AM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Synchronizing folder pair: Two way &lt;-&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ProfileName:/sample@gmail.com/bob<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/home/bob</td>
+        </tr>
+		<tr>
+            <td valign="top">09:28:48 AM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Updating file &quot;ProfileName:/sample@gmail.com/bob/22.pdf&quot;</td>
+        </tr>
+		<tr>
+            <td valign="top">09:28:48 AM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Cannot open file &quot;/home/bob/missing_file.pdf&quot;.<br>
+ENOENT: No such file or directory [stat]<br>
+-&gt; Automatic retry</td>
+        </tr>
+		<tr>
+            <td valign="top">09:29:18 AM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Updating file &quot;ProfileName:/sample@gmail.com/bob/22.pdf&quot;</td>
+        </tr>
+		<tr>
+            <td valign="top">09:29:19 AM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Cannot open file &quot;/home/bob/missing_file.pdf&quot;.<br>
+ENOENT: No such file or directory [stat]<br>
+-&gt; Automatic retry</td>
+        </tr>
+		<tr>
+            <td valign="top">09:29:49 AM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Updating file &quot;ProfileName:/sample@gmail.com/bob/22.pdf&quot;</td>
+        </tr>
+		<tr>
+            <td valign="top">09:29:49 AM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Cannot open file &quot;/home/bob/missing_file.pdf&quot;.<br>
+ENOENT: No such file or directory [stat]<br>
+-&gt; Automatic retry</td>
+        </tr>
+		<tr>
+            <td valign="top">09:30:19 AM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-info.png" height="16" alt="Info:"></td>
+            <td>Updating file &quot;gdrive:/sample@gmail.com/bob/22.pdf&quot;</td>
+        </tr>
+		<tr>
+            <td valign="top">09:30:19 AM</td>
+            <td valign="top"><img src="https://freefilesync.org/images/log/msg-error.png" height="16" alt="Error:"></td>
+            <td>Cannot open file &quot;/home/bob/missing_file.pdf&quot;.<br>
+ENOENT: No such file or directory [stat]</td>
+        </tr>
+	</table>
+
+    <div style="border-bottom:1px solid #AAA; margin:5px 0;"></div>
+    <div style="font-size:small;">
+        <img src="https://freefilesync.org/images/log/os-linux.png" width="24" height="24" alt="" style="vertical-align:middle;">
+        <span style="vertical-align:middle;">Ubuntu 22.04 &ndash; administrator (FS) &ndash; VMware Virtual Platform &ndash; VMware, Inc.</span>
+    </div>
+</body>
+</html>
