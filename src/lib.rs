@@ -12,7 +12,7 @@ use anyhow::{anyhow, Context};
 pub use cli::Cli;
 pub use log_info::LogInfo;
 use notification::send_notification;
-use state::AppState;
+pub use state::AppState;
 
 pub fn run(cli: &Cli) -> anyhow::Result<()> {
     let (state_file, config_folder) = get_canonical_folder_and_filename(&cli.state_file)?;

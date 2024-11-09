@@ -7,7 +7,7 @@ use std::{
 use anyhow::Context;
 use chrono::{DateTime, Local, NaiveDateTime, NaiveTime};
 
-#[derive(Debug, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq)]
 #[serde(deny_unknown_fields)]
 pub struct AppState {
     last_alive_msg: DateTime<Local>,
@@ -54,7 +54,7 @@ impl AppState {
         })
     }
 
-    pub(crate) fn new(logs_dir: PathBuf) -> Self {
+    pub fn new(logs_dir: PathBuf) -> Self {
         Self {
             last_alive_msg: Local::now(),
             // TODO 4: Ensure there is a test to make sure this constant is correct
