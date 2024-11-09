@@ -4,6 +4,7 @@ use anyhow::{bail, Context};
 use chrono::NaiveDateTime;
 use regex::Regex;
 
+#[derive(Debug, serde::Serialize, serde::Deserialize)]
 pub struct LogInfo {
     pub date_time: NaiveDateTime,
     pub abnormal_outcome: Option<String>,

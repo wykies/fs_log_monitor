@@ -68,6 +68,13 @@ impl AppState {
         }
     }
 
+    pub fn new_with_min_dates(logs_dir: PathBuf) -> Self {
+        let mut result = Self::new(logs_dir);
+        result.last_alive_msg = NaiveDateTime::MIN.and_local_timezone(Local).unwrap();
+        result.latest_log_datetime = NaiveDateTime::MIN;
+        result
+    }
+
     pub(crate) fn generate_alive_msg(&mut self) -> String {
         self.last_alive_msg = Local::now();
         "FS Log Monitor still working".to_string()
