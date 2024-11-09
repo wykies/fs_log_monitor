@@ -4,6 +4,13 @@ expression: logs_infos
 ---
 [
   LogInfo(
+    date_time: "2024-10-15T09:28:45",
+    abnormal_outcome: Some("[Error]"),
+    errors_and_warnings: [
+      "Cannot open file \"/home/bob/missing_file.pdf\".; ENOENT: No such file or directory [stat]",
+    ],
+  ),
+  LogInfo(
     date_time: "2024-11-08T14:09:13",
     abnormal_outcome: Some("[Error]"),
     errors_and_warnings: [
@@ -11,13 +18,6 @@ expression: logs_infos
       "Cannot delete file \"/home/bob/logs-ad8f.ffs_tmp\".; ENOENT: No such file or directory [unlink]",
       "Cannot read file \"ProfileName:/sample@gmail.com/bob/log2.7z\".; CURLE_OPERATION_TIMEDOUT: Operation too slow. Less than 1 bytes/sec transferred the last 10 seconds [curl_easy_perform]",
       "Cannot delete file \"/home/bob/log2-62c0.ffs_tmp\".; ENOENT: No such file or directory [unlink]",
-    ],
-  ),
-  LogInfo(
-    date_time: "2024-10-15T09:28:45",
-    abnormal_outcome: Some("[Error]"),
-    errors_and_warnings: [
-      "Cannot open file \"/home/bob/missing_file.pdf\".; ENOENT: No such file or directory [stat]",
     ],
   ),
   LogInfo(

@@ -115,6 +115,10 @@ pub fn process_logs_folder(app_state: &mut AppState) -> anyhow::Result<Vec<LogIn
     if latest_timestamp > app_state.latest_log_datetime() {
         app_state.set_latest_log_datetime(latest_timestamp);
     }
+
+    // Sort output to show errors in age order
+    result.sort_by_key(|x| x.date_time);
+
     Ok(result)
 }
 
