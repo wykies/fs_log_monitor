@@ -14,6 +14,7 @@ pub struct AppState {
     alive_msg_time: Option<NaiveTime>,
     logs_dir: PathBuf,
     latest_log_datetime: NaiveDateTime,
+    allowed_num_hours_without_log: Option<i64>,
     #[serde(skip)]
     is_changed: bool,
 }
@@ -61,6 +62,7 @@ impl AppState {
                 NaiveTime::from_hms_opt(7, 0, 0)
                     .expect("should be valid as it is set at build time"),
             ),
+            allowed_num_hours_without_log: Some(24),
             latest_log_datetime: Local::now().naive_local(),
             logs_dir,
             is_changed: Default::default(),
@@ -106,5 +108,18 @@ impl AppState {
     pub fn set_latest_log_datetime(&mut self, value: NaiveDateTime) {
         self.is_changed = true;
         self.latest_log_datetime = value;
+    }
+
+    pub(crate) fn generate_inactivity_msg(&self) -> Option<String> {
+        let allowed_hours = self.allowed_num_hours_without_log?;
+        let num_hours_since_log = Local::now()
+            .naive_local()
+            .signed_duration_since(self.latest_log_datetime)
+            .num_hours();
+        if num_hours_since_log > allowed_hours {
+            Some(format!("Most recent log found ({}) exceeds the allowed number of hours ({allowed_hours}) without a log. Currently {num_hours_since_log} hours without a log.", self.latest_log_datetime.format("%F %T")))
+        } else {
+            None
+        }
     }
 }

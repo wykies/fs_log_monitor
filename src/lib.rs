@@ -43,6 +43,11 @@ pub fn run(cli: &Cli) -> anyhow::Result<()> {
             .context("failed to send notification of processing failure")?,
     }
 
+    if let Some(msg) = app_state.generate_inactivity_msg() {
+        send_notification(&msg, &config_folder)
+            .context("failed to send notification of inactivity in logs")?
+    }
+
     if app_state.is_changed() {
         app_state
             .save(&cli.state_file)
@@ -82,7 +87,6 @@ pub fn build_err_msg_from_logs(log_infos: Vec<LogInfo>) -> String {
 pub fn process_logs_folder(app_state: &mut AppState) -> anyhow::Result<Vec<LogInfo>> {
     let mut result = Vec::new();
     let mut latest_timestamp = app_state.latest_log_datetime();
-    // TODO 3: Send notification if no logs detected in over 24 hours or over 6 hours and uptime is less than 24 hours
     for dir_entry in read_dir(app_state.logs_dir())
         .with_context(|| format!("failed to read log folder: {:?}", app_state.logs_dir()))?
     {
