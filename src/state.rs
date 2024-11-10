@@ -78,6 +78,7 @@ impl AppState {
 
     pub(crate) fn generate_alive_msg(&mut self) -> String {
         self.last_alive_msg = Local::now();
+        self.is_changed = true;
         "FS Log Monitor still working".to_string()
     }
 

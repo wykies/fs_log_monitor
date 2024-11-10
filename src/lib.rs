@@ -17,15 +17,18 @@ pub use state::AppState;
 pub fn run(cli: &Cli) -> anyhow::Result<()> {
     let (state_file, config_folder) = get_canonical_folder_and_filename(&cli.state_file)?;
     let mut app_state = AppState::load(state_file).context("failed to load state")?;
+
     if cli.print_state_only {
         println!("{app_state:#?}");
         return Ok(());
     }
+
     if let Some(msg) = &cli.test_notification {
         send_notification(msg, &config_folder).context("sending test notification failed")?;
         println!("TEST NOTIFICATION SENT");
         return Ok(());
     }
+
     if app_state.alive_msg_due() {
         let alive_msg = app_state.generate_alive_msg();
         send_notification(&alive_msg, &config_folder).context("failed to send alive message")?;
