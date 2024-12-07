@@ -79,7 +79,10 @@ impl AppState {
     pub(crate) fn generate_alive_msg(&mut self) -> String {
         self.last_alive_msg = Local::now();
         self.is_changed = true;
-        "FS Log Monitor still working".to_string()
+        format!(
+            "FS Log Monitor still working. Version: {}",
+            env!("CARGO_PKG_VERSION")
+        )
     }
 
     /// Due if message not sent for the day and past the time to send the message

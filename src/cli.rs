@@ -10,7 +10,6 @@ use clap::Parser;
 
 Built under the assumption that it will be run infrequently (for instance retry policy will take quite a while)"
 )]
-
 pub struct Cli {
     /// Print state only and exit
     #[arg(long, short)]
